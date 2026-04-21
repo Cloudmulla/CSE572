@@ -17,7 +17,7 @@ DATASET_PATH = "../ConvQuestions/test_set/test_set_ALL.json"
 random_state = 1
 random.seed(random_state)
 np.random.seed(random_state)
-NUM_SAMPLES = 20
+NUM_SAMPLES = 100
 REPETITIONS = 3
 
 #A lot of our constants are from the .env file because they have to do with managing API Calls
