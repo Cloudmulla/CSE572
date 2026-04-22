@@ -63,7 +63,7 @@ limit_checks = {
     "Tokens per Minute": (rpm / 5 * tokens_per_convo, int(os.environ["TPM"])),
     "Tokens per Day": (total_requests / 5 * tokens_per_convo, int(os.environ["TPD"]))
 }
-print("Displaying estimated usage/limit for various metrics.")
+print("Displaying estimated usage/limit for various metrics (does not include retries due to failed requests).")
 print("-------------------------------------------")
 limit_exceeded = False
 for metric, (usage, limit) in limit_checks.items():
