@@ -16,7 +16,6 @@ QUERY_CACHE_PATH = "cached_queries.json"
 with open(QUERY_CACHE_PATH, "r") as f:
     answered_queries = json.load(f)
 
-
 #Simply average together all the query latencies
 def eval_avg_latency():
     latencies = []
@@ -48,22 +47,24 @@ import unicodedata
 
 spacy_model = spacy.load("en_core_web_sm")
 similarity_threshold = 0.8
+def normalize_text(text):
+    text = unicodedata.normalize("NFKC", text)
+    text = re.sub(r"[^\w\s]", "", text.lower())
+    return re.sub(r"\s+", " ", text).strip()
+
 def accuracy_helper(question, answer_index):
-    given = question["given_answers"][answer_index]
-    expected = question["answer_text"]
+    given = normalize_text(question["given_answers"][answer_index])
+    expected = normalize_text(question["answer_text"])
     full_question = question["completed_question"] if "completed_question" in question else question["question"]
 
-    #Start off by normalizing the texts
-    given = unicodedata.normalize("NFKC", given)
-    expected = unicodedata.normalize("NFKC", expected)
-    expected = re.sub(r"[^\w\s]", "", expected.lower())
-    given = re.sub(r"[^\w\s]", "", given.lower())
-
-    #If we have an exact match we can just evaluate accuracy as true right off the bat.
-    match = expected == given
-    if match:
+    if expected == given:
         return 1
-   
+
+    #Make sure that the set of entities in expected is a subset of given
+    expected_entities = {entity.text.lower() for entity in spacy_model(expected).ents}
+    given_entities = {entity.text.lower() for entity in spacy_model(given).ents}
+    if expected_entities and expected_entities.issubset(given_entities):
+        return 1
 
     # #Make sure that the set of entities in expected is a subset of given
     # expected_entities = {entity.text.lower() for entity in spacy_model(expected).ents}
@@ -81,9 +82,6 @@ def accuracy_helper(question, answer_index):
     match = similarity_score >= similarity_threshold
     if match:
         return 1
-    else:
-        print(f"No match between f{expected} and {given}")
-        return 0
 
     #Sometimes model likes to give long answer and even repeat the question so including the question might make meanings match up.
     similarity_score = similarity_helper([f"{full_question} {expected}", given])
