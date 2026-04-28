@@ -95,6 +95,11 @@ def save_progress(slice_data, path):
 
 def is_retryable_error(error):
     error_text = str(error).lower()
+
+    #If we hit daily limit we can't continue
+    if "daily" in error_text:
+        return False
+
     retryable_signals = [
         "output_parse_failed",
         "rate",
