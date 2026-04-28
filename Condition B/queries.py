@@ -138,12 +138,31 @@ def request_with_retries(history):
 
     raise last_error
 
-#TODO: Implement the graph context stuff.
+from SPARQLWrapper import SPARQLWrapper, JSON
+sparql_client = SPARQLWrapper("https://query.wikidata.org/sparql", agent="CSE572-ConditionB")
+sparql_client.setReturnFormat(JSON)
+def get_graph(convo):
+    qid = convo["seed_entity"].split('/')[-1]
+    graph_query = f"""
+SELECT ?propLabel ?valLabel WHERE {{
+    wd:{qid} ?p ?val .
+    ?prop wikibase: directClaim ?p .
+    FILTER(STRSTARTS(STR(?p), STR(wdt:)))
+    SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en".}}
+}}
+LIMIT 20
+    """
+    graph_results = sparql_client.query().convert()
+    print(graph_results)
+    exit(0)
+
 def query_model(convo, REPETITIONS):
     #Initialize empty list for answers and latencies in each question
     for question in convo["questions"]:
         question["given_answers"] = []
         question["latencies"] = []
+    
+    graph_context = get_graph(convo)
     
     #Run through each conversation multiple times so we can check consistency later
     for i in range(REPETITIONS):
