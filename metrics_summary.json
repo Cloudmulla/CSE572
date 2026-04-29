@@ -1,0 +1,18 @@
+[
+  {
+    "Condition": "Condition A",
+    "Conversations": 100,
+    "Overall P@1": 0.9307,
+    "Multi-hop P@1": 0.9208,
+    "Consistency Score": 0.9407,
+    "Avg. Latency (s)": 0.364
+  },
+  {
+    "Condition": "Condition B",
+    "Conversations": 73,
+    "Overall P@1": 0.9342,
+    "Multi-hop P@1": 0.9201,
+    "Consistency Score": 0.9526,
+    "Avg. Latency (s)": 0.753
+  }
+]
