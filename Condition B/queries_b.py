@@ -146,7 +146,7 @@ def get_graph(convo):
     These triples are injected into the LLM system prompt as static
     knowledge-graph context (Condition B).
     """
-    qid = convo["seed_entity"].split("/")[-1].split("?")
+    qid = convo["seed_entity"].split("/")[-1].split("?")[0]
 
     graph_query = f"""
 SELECT ?propLabel ?valLabel WHERE {{
