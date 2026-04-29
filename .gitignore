@@ -1,1 +1,34 @@
 .env
+
+# IDE and editor files
+.vscode/
+*.swp
+*.swo
+
+# Python cache and virtual environments
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+env/
+
+# Temporary and build files
+_tmp_*
+*.pdf
+
+# Project documentation and notes (working files, not versioned)
+AI Reasoning.txt
+KB.txt
+Project_Ideation.md
+Project_Progress_Report.md
+Project_Progress_Report_ACM.tex
+Project_Progress_Report_FINAL_FORMAT.md
+Rubric_Comparison_Analysis.md
+Teammate_Improvement_Checklist.md
+classmate_report_full.txt
+interim_report_full.txt
+extract_classmate_pdf.py
+extract_interim_pdf.py
+CSE572_Project_Proposal.md
+
+# Jupyter notebooks (working copies)
+*.ipynb
