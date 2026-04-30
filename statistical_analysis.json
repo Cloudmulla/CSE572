@@ -1,0 +1,62 @@
+{
+  "A vs B": {
+    "accuracy": {
+      "p_value": 0.7592025610060373,
+      "cohens_d": 0.019391855080350826,
+      "significance": "ns",
+      "effect": "negligible"
+    },
+    "consistency": {
+      "p_value": 0.06602215829383153,
+      "cohens_d": -0.11639028512421534,
+      "significance": "ns",
+      "effect": "negligible"
+    },
+    "latency": {
+      "p_value": 1.7458674601786989e-43,
+      "cohens_d": -0.9183648211830774,
+      "significance": "***",
+      "effect": "large"
+    }
+  },
+  "A vs C": {
+    "accuracy": {
+      "p_value": 9.723148505433382e-05,
+      "cohens_d": 0.24749641568565517,
+      "significance": "***",
+      "effect": "small"
+    },
+    "consistency": {
+      "p_value": 9.1182822163856e-06,
+      "cohens_d": 0.2820872002130684,
+      "significance": "***",
+      "effect": "small"
+    },
+    "latency": {
+      "p_value": 5.063458125182859e-08,
+      "cohens_d": -0.347296658755725,
+      "significance": "***",
+      "effect": "small"
+    }
+  },
+  "B vs C": {
+    "accuracy": {
+      "p_value": 0.0003632985360671833,
+      "cohens_d": 0.226272790334248,
+      "significance": "***",
+      "effect": "small"
+    },
+    "consistency": {
+      "p_value": 6.3183440483373235e-09,
+      "cohens_d": 0.37055713747876884,
+      "significance": "***",
+      "effect": "small"
+    },
+    "latency": {
+      "p_value": 1.5693563950583943e-06,
+      "cohens_d": -0.30555775766778437,
+      "significance": "***",
+      "effect": "small"
+    }
+  }
+}
