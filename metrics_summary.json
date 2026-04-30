@@ -9,10 +9,18 @@
   },
   {
     "Condition": "Condition B",
-    "Conversations": 73,
-    "Overall P@1": 0.9342,
-    "Multi-hop P@1": 0.9201,
-    "Consistency Score": 0.9526,
-    "Avg. Latency (s)": 0.753
+    "Conversations": 100,
+    "Overall P@1": 0.9267,
+    "Multi-hop P@1": 0.9133,
+    "Consistency Score": 0.9543,
+    "Avg. Latency (s)": 0.816
+  },
+  {
+    "Condition": "Condition C",
+    "Conversations": 100,
+    "Overall P@1": 0.8673,
+    "Multi-hop P@1": 0.8567,
+    "Consistency Score": 0.8806,
+    "Avg. Latency (s)": 4.149
   }
 ]
